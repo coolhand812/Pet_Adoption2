@@ -31,7 +31,7 @@
 					$servername = "localhost";
 					$username = "root";
 					$password = "";
-					$dbname = "pet_adoption";
+					$dbname = "pet_adoption2";
 
 					// Create connection
 					$conn = new mysqli($servername, $username, $password, $dbname);

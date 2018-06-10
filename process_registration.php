@@ -41,7 +41,7 @@
 							$servername = "localhost";
 							$username = "root";
 							$password = "";
-							$database = "pet_adoption";
+							$database = "pet_adoption2";
 							$conn = new mysqli($servername, $username, $password, $database);
 							// Check connection
 							if (!$conn)
@@ -115,7 +115,7 @@
 							$servername = "localhost";
 							$username = "root";
 							$password = "";
-							$database = "pet_adoption";
+							$database = "pet_adoption2";
 								//make connection	
 							$conn = new mysqli($servername, $username, $password, $database);
 								// Check connection
