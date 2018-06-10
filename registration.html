@@ -1,0 +1,82 @@
+<html>
+	<head>
+		<title>Joe's Website</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Joe's Website</h1>
+			</div>
+			
+			<div id="content">
+				<div id="nav">
+					<h3>Navigation</h3>
+					<ul>
+						<li><a href="main_menu.html">Main</a></li>
+						<li><a href="about.php">About</a></li>
+						<li><a href="mailto:coolhand812@cityuniversity.edu">Contact</a></li>
+					</ul>
+				</div>
+				
+				<div id="header2">
+					<h2>Pet Adoption Form</h2>
+				</div>
+				
+				<div id="main">
+                
+					<!-- Form with no validation -->
+	<form action="process_registration.php" method="post">
+		
+		<b>Intake date </b><br>
+		<input type="date" name="inDate" value="<?php echo date('Y-m-d'); ?>" />
+		<br><br>
+		
+		<b>Pet ID </b><br>
+		<input type="text" name="petID" size="30" maxlength="25" title=" Enter Your First Name">
+		<br><br>
+		
+		<b>Please enter the Pet name</b><br>
+		<input type="text" name="petName" size="30" maxlength="25" title=" Enter petName">
+		<br><br>
+		
+		<b>Please enter the Pet's gender </b><br>
+		<input type="text" name="petGender" size="30" maxlength="25" title=" Enter petGender">
+		<br><br>
+		
+		<b>Please enter type of pet (dog, cat, etc..) </b><br>
+		<select name = "petType">
+			<option value="DOG" selected="selected">dog</option>
+			<option value="CAT">cat</option>
+			<option value="LIZ">lizard</option>
+			<option value="BIR">bird</option>
+			<option value="RAB">rabbit</option>
+		</select>
+		<br><br>
+		
+		<b>Please enter the pet's age </b><br>
+		<input type="text" name="petAge" size="30" maxlength="10" title=" Enter petAge">
+		<br><br>
+		
+		<b>Please enter any notes </b><br>
+		<input type="text" name="petNotes" size="30" maxlength="120" title=" Enter petNotes">
+		<br><br>
+				
+		<input type="submit" value="Sign Up">
+	</form>
+	<br><br>	
+					
+				</div>
+				
+			</div>
+			
+			<div id="footer">
+				Copyright &copy; 2018 Joe Diaz
+			</div>
+			
+		</div>
+		
+	</body>
+	
+</html>
