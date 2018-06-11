@@ -104,6 +104,7 @@
 							echo "<b>Creating User: <i>$petName $petType</i></b><br>";
 							// Create connection
 							include 'db_connection.php';
+							
 							$sql = "INSERT INTO pettable (pet_id, name, gender, age, type_id, notes, intake_date)
 							VALUES ('$petID', '$petName', '$petGender', '$petAge', '$petType', '$petNotes', '$inDate')";
 						

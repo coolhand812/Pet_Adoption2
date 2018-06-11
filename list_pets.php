@@ -28,17 +28,7 @@
 				<br><br>
 				<?php
 					//generate db query and get a table
-					$servername = "localhost";
-					$username = "root";
-					$password = "";
-					$dbname = "pet_adoption2";
-
-					// Create connection
-					$conn = new mysqli($servername, $username, $password, $dbname);
-					// Check connection
-					if ($conn->connect_error) {
-    					die("Connection failed: " . $conn->connect_error);
-					} 
+					include 'db_connection.php'; 
 
 					$sql = "SELECT pet_id, name, gender, age, type_id, notes, intake_date FROM pettable";
 					$result = $conn->query($sql);
