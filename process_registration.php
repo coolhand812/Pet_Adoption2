@@ -38,29 +38,20 @@
 							}
 
 							//petID validate If the pet_id already exists
-							$servername = "localhost";
-							$username = "root";
-							$password = "";
-							$database = "pet_adoption2";
-							$conn = new mysqli($servername, $username, $password, $database);
-							// Check connection
-							if (!$conn)
-							{
-								die("Connection failed: " . mysqli_connect_error());
-							}
-							echo "<b>Connection to MySQL DB established!</b> <br>";
-							try{
-							$result = $conn->query("SELECT pet_id FROM pettable WHERE pet_id = $petID");
-								if($result->num_rows == 0) {
-									 // row not found, do stuff...
-							 		$petID = $_POST["petID"];
-								} else {
+							include 'db_connection.php';
+							
+							$sql = "SELECT pet_id FROM pettable WHERE pet_id = $petID";
+
+							if ($conn->query($sql) === false)
+							{										 
+								// row not found, do stuff...
+								echo "<b>pet ID is available</b><br>";
+								$petID = $_POST["petID"];
+							} else {
 									// do other stuff...
-									$petIDErr = "Please choose a different pet ID";
-								}
-							}catch(Exception $e){
-								echo 'Message: ' .$e->getMessage();
+								$petIDErr = "Please choose a different pet ID";
 							}
+							
 							$conn->close();
 							
 
@@ -112,18 +103,7 @@
 						{
 							echo "<b>Creating User: <i>$petName $petType</i></b><br>";
 							// Create connection
-							$servername = "localhost";
-							$username = "root";
-							$password = "";
-							$database = "pet_adoption2";
-								//make connection	
-							$conn = new mysqli($servername, $username, $password, $database);
-								// Check connection
-							if (!$conn)
-							{
-								die("Connection failed: " . mysqli_connect_error());
-							}
-							echo "<b>Connection to MySQL DB established!</b> <br>";
+							include 'db_connection.php';
 							$sql = "INSERT INTO pettable (pet_id, name, gender, age, type_id, notes, intake_date)
 							VALUES ('$petID', '$petName', '$petGender', '$petAge', '$petType', '$petNotes', '$inDate')";
 						
