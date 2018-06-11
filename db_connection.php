@@ -10,5 +10,5 @@
     {
         die("Connection failed: " . mysqli_connect_error());
     }
-    echo "<b>Connection to MySQL DB established!</b> <br>";
+    //echo "<b>Connection to MySQL DB established!</b> <br>";
 ?>
