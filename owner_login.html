@@ -21,32 +21,32 @@
 				</div>
 				
 				<div id="header2">
-					<h2><b>We are your pet shelter!</h2></b>
+					<h2><b>Pet owners log in!</h2></b>
 				</div>
 				
 				<div id="main">
 						
-				<p>...and, we are passionate about our canine friends.</p>
-                <p> It is no secret that our canine companions enrich our lives </p>
-                <p> and, in order to prolong our best friend's life, we need to keep them healthy. </p>
-                <hr>
-                <p><b>Why adopt instead of buyng your pet?</b></p>
-                    <ol>
-                        <li>Because you'll save a life</li>
-                        <li>Because you'll get a great animal</li>
-                        <li>Because it'll cost you less</li>
-						<li>Because it's one way to fight puppy mills</li>
-						<li>Because you'll change a homeless animal's whole world</li>
-                    </ol>
-
-                <p><b>What are some of the benefits of waking your dog?</b></p>
-                    <ol>
-                        <li>Keeps their heart and lungs in top shape</li>
-                        <li>It keeps their joints healthy</li>
-                        <li>It helps their digestive and circulatory system</li>
-                        <li>It stops their destructive behavior and hyperactivity</li>
-                    </ol>
-                <hr>	
+                <?php
+                    // If the name field is filled in
+                    if (isset($_POST['name']))
+                    {
+                    $name = $_POST['name'];
+                    $email = $_POST['email'];
+                    printf("Hi %s! <br />", $name);
+                    printf("The address %s will soon be a spam-magnet! <br />", $email);
+                    }
+                 ?>
+                    <form action="subscribe.php" method="post">
+                    <p>
+                    Pet ID Number:<br />
+                    <input type="text" id="name" name="name" size="20" maxlength="40" />
+                    </p>
+                    <p>
+                    Email Address:<br />
+                    <input type="text" id="email" name="email" size="20" maxlength="40" />
+                    </p>
+                    <input type="submit" id="submit" name = "submit" value="Go!" />
+                    </form>	
 					
 				</div>
 				
