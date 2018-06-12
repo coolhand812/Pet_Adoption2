@@ -41,7 +41,7 @@
 		<input type="text" name="newOwner" size="30" maxlength="25" title=" Enter new owner name">
 		<br><br>
 		
-		<input type="submit" value="Sign Up">
+		<input type="submit" value="register adoption">
 	</form>
 	<br><br>	
 					
