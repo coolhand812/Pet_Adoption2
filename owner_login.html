@@ -1,3 +1,7 @@
+<?php
+// Start the session
+session_start();
+?>
 <html>
 	<head>
 		<title>Joe's Website</title>
@@ -27,24 +31,35 @@
 				<div id="main">
 						
                 <?php
-                    // If the name field is filled in
-                    if (isset($_POST['name']))
-                    {
-                    $name = $_POST['name'];
-                    $email = $_POST['email'];
-                    printf("Hi %s! <br />", $name);
-                    printf("The address %s will soon be a spam-magnet! <br />", $email);
-                    }
+                    
+                include 'db_connection.php';
+                
+                if(isset($_POST["petID"])){
+                 $petID = $_POST["petID"];       
+                }
+
+                $sql = "SELECT pet_id FROM adoption WHERE pet_id = $petID";
+
+                if ($conn->query($sql) === true)
+                {										 
+                    
+                    $_SESSION["THIS"] = "owners";
+                    include 'main_menu2.html';
+                    
+                } else {
+                        // do other stuff...
+                        echo "<b>number invalid</b><br>";
+                    $_POST['wrong_number'];
+                }
+
                  ?>
-                    <form action="subscribe.php" method="post">
+                    <form action="owner_login.html" method="post">
                     <p>
                     Pet ID Number:<br />
-                    <input type="text" id="name" name="name" size="20" maxlength="40" />
+                    <input type="text" name="petID" size="30" maxlength="25" title=" Enter Your pet ID">
+                    <input type="hidden" name="wrong_number" value="<?php owner_login.html;?>" />
                     </p>
-                    <p>
-                    Email Address:<br />
-                    <input type="text" id="email" name="email" size="20" maxlength="40" />
-                    </p>
+                    
                     <input type="submit" id="submit" name = "submit" value="Go!" />
                     </form>	
 					
