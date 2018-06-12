@@ -39,6 +39,7 @@
                             FROM pettable
                             INNER JOIN adoption on adoption.pet_id = pettable.pet_id
                             INNER JOIN pet_typetable on pet_typetable.pet_type = pettable.type_id");
+                            
                     $result = $conn->query($join);
 
 					if ($result->num_rows > 0) {
