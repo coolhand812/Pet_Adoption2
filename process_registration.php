@@ -21,7 +21,7 @@
 				</div>
 				
 				<div id="header2">
-					<h2>Pet Adoption Form</h2>
+					<h2>Pet Intake Form</h2>
 				</div>
 				
 				<div id="main">
