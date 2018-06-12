@@ -61,9 +61,9 @@
 							    	$newOwner = ($_POST["newOwner"]);
 								// check if name only contains letters and whitespace
 								if (!preg_match("/^[a-zA-Z ]*$/",$newOwner)) {
-						  			$petNameErr = "Only letters and white space allowed"; 
+						  			$newOwnerErr = "Only letters and white space allowed"; 
 								}elseif(isset($_POST["newOwner"])){
-									$petName = $_POST["newOwner"];
+									$newOwner = $_POST["newOwner"];
 								}
 							}							
 						}
