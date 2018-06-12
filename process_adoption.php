@@ -21,7 +21,7 @@
 				</div>
 				
 				<div id="header2">
-					<h2>Pet Adoption Form</h2>
+					<h2>Process Pet Adoption</h2>
 				</div>
 				
 				<div id="main">
@@ -33,14 +33,14 @@
 					
 						if ($_SERVER["REQUEST_METHOD"] == "POST") {
 							
-							if(isset($_POST["inDate"])){
-								$inDate = $_POST["inDate"];
+							if(isset($_POST["dateAdopted"])){
+								$dateAdopted = $_POST["dateAdopted"];
 							}
 
 							//petID validate If the pet_id already exists
 							include 'db_connection.php';
 							
-							$sql = "SELECT pet_id FROM pettable WHERE pet_id = $petID";
+							$sql = "SELECT pet_id FROM adoption WHERE pet_id = $petID";
 
 							if ($conn->query($sql) === false)
 							{										 
@@ -55,58 +55,30 @@
 							$conn->close();
 							
 
-							if (empty($_POST["petName"])) {
-									$petNameErr = "Name is required";
+							if (empty($_POST["newOwner"])) {
+									$newOwnerErr = "Name is required";
 					  			} else {
-							    	$petName = ($_POST["petName"]);
+							    	$newOwner = ($_POST["newOwner"]);
 								// check if name only contains letters and whitespace
-								if (!preg_match("/^[a-zA-Z ]*$/",$petName)) {
+								if (!preg_match("/^[a-zA-Z ]*$/",$newOwner)) {
 						  			$petNameErr = "Only letters and white space allowed"; 
-								}elseif(isset($_POST["petName"])){
-									$petName = $_POST["petName"];
+								}elseif(isset($_POST["newOwner"])){
+									$petName = $_POST["newOwner"];
 								}
-							}
-					  
-							if (empty($_POST["petGender"])) {
-									$petGenderErr = "Gender is required";
-					  			} else {
-									$petGender = ($_POST["petGender"]);
-								// check if name only contains letters and whitespace
-								if (!preg_match("/^[a-zA-Z ]*$/",$petGender)) {
-						  			$petGenderErr = "Only letters and white space allowed"; 
-								}elseif(isset($_POST["petGender"])){
-									$petGender = $_POST["petGender"];
-								}
-							}
-						
-					  		if(isset($_POST["petType"])){
-								$petType = $_POST["petType"];
-							}
-
-							if (empty($_POST["petAge"])) {
-								$petAgeErr = "pet age is required";
-					  			} elseif(isset($_POST["petAge"])){
-								$petAge = $_POST["petAge"];
-							}
-					
-					  		if (empty($_POST["petNotes"])){
-								$petNotes = "please insert a pet description";
-					  			} elseif(isset($_POST["petNotes"])){
-								$petNotes = $_POST["petNotes"];
-					  		}
+							}							
 						}
 
 						echo "</br></br>";
-						CreateMySQLUser($petID, $petName, $petGender, $petAge, $petType, $petNotes, $inDate);
+						CreateMySQLUser($petID, $dateAdopted, $newOwner);
 						
-						function CreateMySQLUser($petID, $petName, $petGender, $petAge, $petType, $petNotes, $inDate)
+						function CreateMySQLUser($petID, $dateAdopted, $newOwner)
 						{
-							echo "<b>Creating User: <i>$petName $petType</i></b><br>";
+							echo "<b>Creating User: <i>$petID $newOwner</i></b><br>";
 							// Create connection
 							include 'db_connection.php';
 							
-							$sql = "INSERT INTO pettable (pet_id, name, gender, age, type_id, notes, intake_date)
-							VALUES ('$petID', '$petName', '$petGender', '$petAge', '$petType', '$petNotes', '$inDate')";
+							$sql = "INSERT INTO adoption (pet_id, date_of_adoption, new_owner)
+							VALUES ('$petID', '$dateAdopted', '$newOwner')";
 						
 							echo "SQL Statement: $sql <br><br>";
 							if ($conn->query($sql) === TRUE)
@@ -122,8 +94,7 @@
 						}
 					?>	
 						</br></br>
-							
-					
+
 				</div>
 				
 			</div>
