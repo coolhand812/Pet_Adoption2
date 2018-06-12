@@ -1,37 +1,78 @@
 <?php
-    session_start(); // Starting Session
-    $error=''; // Variable To Store Error Message
-    if (isset($_POST['submit'])) {
-        if (empty($_POST['email']) || empty($_POST['psw'])) {
-            $error = "Email or Password is invalid";
-        }
-        else {
-            // Define $username and $password
-            $email=$_POST['email'];
-            $password=$_POST['psw'];
-            
-            // Establishing Connection with Server by passing server_name, user_id and password as a parameter
-            include 'db_connection.php';
-            
-            // SQL query to fetch information of registerd users and finds user match.
-            $stmt = $db->prepare("SELECT email, password FROM dog_walkers WHERE email=? AND password=MD5(?)");
-            $stmt->bind_param('ss', $email, $password); 
-            $stmt->execute();
-            $stmt->store_result();
-            
-            if ($stmt->num_rows == 0) {
-                $error = "Username or Password is invalid";
-                echo $error;
-                echo '<br><h2><a href=main_menu.html>Go back to main menu</h2>';                
-            } else {
-                $_SESSION['login_walker']=$email; // Initializing Session
-                //echo  $_SESSION['login_walker'];
-                header ("location:index.php");
-            }
-            mysqli_close($db); // Closing Connection
-        }
-    }
-    else {
-        echo 'post submit error';
-    }
+// Start the session
+session_start();
 ?>
+<html>
+	<head>
+		<title>Joe's Website</title>
+		<link rel="stylesheet" type="text/css" href="style.css" />
+	</head>
+
+	<body>
+		<div id="container">
+			<div id="header">
+				<h1>Joe's Website</h1>
+			</div>
+			
+			<div id="content">
+				<div id="nav">
+					<h3>Navigation</h3>
+					<ul>
+						<li><a href="main_menu2.html">Main</a></li>
+						<li><a href="about.php">About</a></li>
+						<li><a href="mailto:coolhand812@cityuniversity.edu">Contact</a></li>
+					</ul>
+				</div>
+				
+				<div id="header2">
+					<h2><b>Admin log in!</h2></b>
+				</div>
+				
+				<div id="main">
+						
+                <?php
+                    
+                include 'db_connection.php';
+                
+                if(isset($_POST["adminID"])){
+                 $adminID = $_POST["adminID"];       
+                }
+
+                $sql = "SELECT admin_id FROM admin_table WHERE admin_id = $adminID";
+
+                if ($conn->query($sql) === true)
+                {										 
+                    
+                    $_SESSION["THIS"] = "admins";
+                    include 'main_menu.html';
+                    
+                } else {
+                    // do other stuff...
+                    echo "<b>number invalid</b><br>";
+                    $_POST['wrong_number'];
+                }
+
+                 ?>
+                    <form action="admin_login.html" method="post">
+                    <p>
+                    Admin ID Number:<br />
+                    <input type="text" name="adminID" size="30" maxlength="25" title=" Enter Your admin ID">
+                    <input type="hidden" name="wrong_number" value="<?php admin_login.html;?>" />
+                    </p>
+                    
+                    <input type="submit" id="submit" name = "submit" value="Go!" />
+                    </form>	
+					
+				</div>
+				
+			</div>
+			
+			<div id="footer">
+				Copyright &copy; 2018 Joe Diaz
+			</div>
+			
+		</div>
+		
+	</body>
+	
+</html>
