@@ -14,14 +14,14 @@
 				<div id="nav">
 					<h3>Navigation</h3>
 					<ul>
-						<li><a href="main_menu.html">Main</a></li>
+						<li><a href="main_menu2.html">Main</a></li>
 						<li><a href="about.php">About</a></li>
 						<li><a href="mailto:coolhand812@cityuniversity.edu">Contact</a></li>
 					</ul>
 				</div>
 				
 				<div id="header2">
-					<h2>We are your pet shelter!</h2>
+					<h2><b>We are your pet shelter!</h2></b>
 				</div>
 				
 				<div id="main">
